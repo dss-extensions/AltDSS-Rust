@@ -13,4 +13,4 @@ The current milestones are:
 
 3. Provide access to the new API, which exposes all DSS classes and functions more conveniently.
 
-This project is then expected to allow using both the official OpenDSS, which its limitations, and DSS-Extensions implementation (aka AltDSS).
+This project is then expected to allow using both the official OpenDSS, within its limitations, and the DSS-Extensions implementation (aka AltDSS/DSS C-API).
