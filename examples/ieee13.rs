@@ -142,11 +142,11 @@ fn run_ieee13(dss: &IDSS) -> Result<(), DSSError> {
     println!("Circuit name: {}", circ.Name()?);
     println!("Number of buses: {}", circ.NumBuses()?);
     println!("Number of nodes: {}", circ.NumNodes()?);
-    println!("\nBus name, bus voltage (pu)");
-    let bus_names = circ.AllBusNames()?;
-    let bus_vpu = circ.AllBusVmagPu()?;
-    for b in 0..bus_names.len() {
-        println!("{}, {:.3}", bus_names[b], bus_vpu[b]);
+    println!("\nNode name, node voltage (pu)");
+    let node_names = circ.AllNodeNames()?;
+    let node_vpu = circ.AllBusVmagPu()?;
+    for b in 0..node_names.len() {
+        println!("{}, {:.3}", node_names[b], node_vpu[b]);
     }
     Ok(())
 }
