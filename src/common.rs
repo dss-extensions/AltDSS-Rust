@@ -123,11 +123,13 @@ impl DSSContext {
         (c_strs, c_ptrs)
     }
 
-    pub fn GetStringArray(&self, data: *mut *mut c_char, cnt: [i32; 4]) -> Result<Box::<[String]>, DSSError> {
+    pub fn GetStringArray(&self, mut data: *mut *mut c_char, cnt: [i32; 4]) -> Result<Box::<[String]>, DSSError> {
         self.DSSError()?;
         let res_cnt = cnt[0] as usize;
         let cdata = unsafe { from_raw_parts_mut(data, res_cnt) };
-        Ok(unsafe { (*cdata).iter_mut().map(|s| CStr::from_ptr(*s).to_string_lossy().into_owned()).collect() })
+        let res = unsafe { (*cdata).iter_mut().map(|s| CStr::from_ptr(*s).to_string_lossy().into_owned()).collect() };
+        unsafe { dss_capi::DSS_Dispose_PPAnsiChar(&mut data, cnt[0]) };
+        Ok(res)
     }
 
     pub fn GetFloat64ArrayGR(&self) -> Result<Box::<[f64]>, DSSError> {
