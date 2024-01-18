@@ -4,10 +4,11 @@ use std::path::PathBuf;
 
 fn main() {
     let pwd_dir = env::var("CARGO_MANIFEST_DIR").unwrap();
-    let inc_path = Path::new(&*pwd_dir).join("../dss_capi/include");
-    let lib_path = Path::new(&*pwd_dir).join("../dss_capi/lib/linux_x64");
+    let inc_path = Path::new(&*pwd_dir).join("./dss_capi/include");
+    let lib_path = Path::new(&*pwd_dir).join("./dss_capi/lib/linux_x64");
     let profile = env::var("PROFILE").unwrap();
 
+    println!("cargo:rustc-link-arg=-Wl,-rpath={}", lib_path.to_str().unwrap());
     // Select the library binary according to the build profile
     match profile.as_str() {
         "debug" => println!("cargo:rustc-link-lib=dylib=dss_capid"),

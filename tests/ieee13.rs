@@ -151,7 +151,8 @@ fn run_ieee13(dss: &IDSS) -> Result<(), DSSError> {
     Ok(())
 }
 
-fn main() {
+#[test]
+fn ieee13() {
     // Create the context wrapper
     let ctx = DSSContext::prime();
     // Bind it to API structs

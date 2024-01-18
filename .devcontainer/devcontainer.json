@@ -1,0 +1,6 @@
+{
+	"name": "AltDSS-Rust",
+	"image": "rust:1.74.0-bookworm",
+	"runArgs": ["--network=host"],
+	"postCreateCommand": "bash ./scripts/build_linux_x64.sh"
+}

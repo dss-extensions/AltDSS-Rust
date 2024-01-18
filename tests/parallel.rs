@@ -19,7 +19,7 @@ use std::collections::VecDeque;
 use std::sync::mpsc::channel;
 use std::process; // for exit
 
-const REDIRECT_COMMAND: &str = "redirect ../electricdss-tst/Version8/Distrib/EPRITestCircuits/ckt5/Master_ckt5.dss";
+const REDIRECT_COMMAND: &str = "redirect ./electricdss-tst/Version8/Distrib/EPRITestCircuits/ckt5/Master_ckt5.dss";
 
 fn solve_scenario(circ: &ICircuit, loadmult: f64) -> Result<(f64, f64), DSSError> {
     // Solve a simple snapshot to reset most of the general state
@@ -115,7 +115,8 @@ fn run_parallel(dss: &IDSS, num_threads: usize) -> Result<(), DSSError> {
     Ok(())
 }
 
-fn main() {
+#[test]
+fn parallel() {
     // Create the context wrapper
     let ctx = DSSContext::prime();
     // Bind it to the API structs

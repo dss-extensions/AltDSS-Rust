@@ -21,7 +21,8 @@ fn list_storage_props(dss: &IDSS) -> Result<(), DSSError> {
     Ok(())
 }
 
-fn main() {
+#[test]
+fn storage_props() {
     // Create the context wrapper
     let ctx = DSSContext::prime();
     // Bind it to API structs

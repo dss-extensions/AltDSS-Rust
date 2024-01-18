@@ -144,7 +144,7 @@ impl DSSContext {
             res_cnt = 0
         }
         res_cnt /= 2;
-        let cdata = unsafe { from_raw_parts((*self.DataPtr_PDouble) as (*const Complex<f64>), res_cnt) };
+        let cdata = unsafe { from_raw_parts((*self.DataPtr_PDouble) as *const Complex<f64>, res_cnt) };
         Ok(cdata.iter().cloned().collect())
     }
 
