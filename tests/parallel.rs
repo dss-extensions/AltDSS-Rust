@@ -37,6 +37,7 @@ use std::process; // for exit
 
 const REDIRECT_COMMAND: &str = "redirect ./electricdss-tst/Version8/Distrib/EPRITestCircuits/ckt5/Master_ckt5.dss";
 
+#[allow(non_snake_case)]
 fn solve_scenario(circ: &ICircuit, loadmult: f64) -> Result<(f64, f64), DSSError> {
     // Solve a simple snapshot to reset most of the general state
     circ.Solution.Set_Mode(SolveModes::SnapShot)?;
