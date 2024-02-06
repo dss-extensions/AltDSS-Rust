@@ -40,7 +40,7 @@ impl fmt::Display for DSSError {
 
 impl fmt::Debug for DSSError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{{ file: {}, line: {} }}", file!(), line!())
+        write!(f, "(#{}) {}", self.number, self.message)
     }
 }
 
