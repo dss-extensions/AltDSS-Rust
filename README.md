@@ -19,7 +19,7 @@ This project is then expected to allow using both the official OpenDSS, within i
 
 # Current status
 
-- Initial testing done on x64 Linux, based on DSS C-API v**0.14.0b2**.
+- Initial testing done on x64 Linux, based on DSS C-API v**0.14.1**.
 - Exposes nearly all of the classic OpenDSS API and most of the classic API extensions in AltDSS/DSS C-API.
 - Organized in two main high-level structs: a `common::DSSContext` and `classic::IDSS`. `IDSS` mimics the COM organization, per [DSS-Python](https://dss-extensions.org/dss_python/dss/#module-dss.IDSS) (plus [DSS Sharp](https://dss-extensions.org/dss_sharp/html/6ec40528-724b-089f-8ac5-ce043f8f981f.htm) and DSS MATLAB) and the official implementation per https://opendss.epri.com/COMInterface.html
 - Future interfaces, exposed in other modules, will reuse the `DSSContext` struct.
@@ -29,11 +29,11 @@ This project is then expected to allow using both the official OpenDSS, within i
 Pending tasks and decisions:
 
 - Tests and docs; for the general API functions, the best is to document the DSS C-API header and automate porting those to all other projects (this is partially done right now; could be more integrated).
-- Adjust licensing (move to Apache 2) per 
-- Merge relevant code from the OpenEnergySolutions repositories
+- ~~Adjust licensing (move to Apache 2)~~
+- ~~Merge relevant code from the OpenEnergySolutions repositories~~
 - Mirror in Rust the default behavior from https://github.com/dss-extensions/AltDSS-Go/issues/2
-- Wait for DSS C-API 0.14.0 to be released
-- Identifiers: decide if/what/how to adapt the naming style, original vs. Rust's snake case (for most things).
+- ~~Wait for DSS C-API 0.14.0 to be released~~
+- ~~Identifiers: decide if/what/how to adapt the naming style, original vs. Rust's snake case (for most things).~~
     - The closer the names are to the other bindings (the other DSS-Extensions, and the official OpenDSS COM), the easier it would be to port code and ease the transition from other programming languages.
     - OpenDSS uses units as names in lot of places. Capitalization is important for those. Although `kWh` is acceptable as `kwh`, many other quantities would be ambiguous in lowercase: `kV` vs `Kv` (kilovolts vs some K constant), `MV` vs `mV` (megavolts vs millivolts). In other words, although there are some bad function names in OpenDSS and DSS C-API, the correct capitalization of units does provide context that could be enough to avoid reading for the documentation in many situations.
         - The warning from the compiler are not useful in most cases, so we would need to check each function name and document the changes. From one of the examples, there is a variable named `losses_kWh` and the compiler suggestion is `losses_k_wh`.
@@ -50,10 +50,12 @@ This could change shortly, so remember to check later.
 
 Some direct instructions to get up and running (assuming Rust and tools are already installed):
 
+(NOTE: this needs to be updated, but the general idea still applies)
+
 ```shell
 mkdir altdss-tests
 cd altdss-tests
-wget -qO- https://github.com/dss-extensions/dss_capi/releases/download/0.14.0b2/dss_capi_0.14.0b2_linux_x64.tar.gz | tar zxv
+wget -qO- https://github.com/dss-extensions/dss_capi/releases/download/0.14.1/dss_capi_0.14.1_linux_x64.tar.gz | tar zxv
 git clone --depth=1 https://github.com/dss-extensions/electricdss-tst
 git clone https://github.com/dss-extensions/altdss-rust
 export LD_LIBRARY_PATH=`pwd`/dss_capi/lib/linux_x64
