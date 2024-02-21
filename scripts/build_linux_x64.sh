@@ -29,9 +29,9 @@ function build_and_test() {
     DSS_CAPI_PLATFORM="linux_x64"
 
     # Get dss_capi and necessary files
-    wget -qO- "https://github.com/dss-extensions/dss_capi/releases/download/${DSS_CAPI_VERSION}b2/dss_capi_${DSS_CAPI_VERSION}b2_${DSS_CAPI_PLATFORM}.tar.gz" | tar zxv
+    wget -qO- "https://github.com/dss-extensions/dss_capi/releases/download/${DSS_CAPI_VERSION}/dss_capi_${DSS_CAPI_VERSION}_${DSS_CAPI_PLATFORM}.tar.gz" | tar zxv
 
-    # If electricdss-tst doesn't exist,s
+    # If electricdss-tst doesn't exist,
     # clone it.
     if [[ ! -d "$PWD/electricdss-tst" ]];
     then    
