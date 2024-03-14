@@ -19,7 +19,7 @@ This project is then expected to allow using both the official OpenDSS, within i
 
 # Current status
 
-- Initial testing done on x64 Linux, based on DSS C-API v**0.14.1**.
+- Initial testing done on x64 Linux, based on DSS C-API v**0.14.3**.
 - Exposes nearly all of the classic OpenDSS API and most of the classic API extensions in AltDSS/DSS C-API.
 - Organized in two main high-level structs: a `common::DSSContext` and `classic::IDSS`. `IDSS` mimics the COM organization, per [DSS-Python](https://dss-extensions.org/dss_python/dss/#module-dss.IDSS) (plus [DSS Sharp](https://dss-extensions.org/dss_sharp/html/6ec40528-724b-089f-8ac5-ce043f8f981f.htm) and DSS MATLAB) and the official implementation per https://opendss.epri.com/COMInterface.html
 - Future interfaces, exposed in other modules, will reuse the `DSSContext` struct.
@@ -55,7 +55,7 @@ Some direct instructions to get up and running (assuming Rust and tools are alre
 ```shell
 mkdir altdss-tests
 cd altdss-tests
-wget -qO- https://github.com/dss-extensions/dss_capi/releases/download/0.14.1/dss_capi_0.14.1_linux_x64.tar.gz | tar zxv
+wget -qO- https://github.com/dss-extensions/dss_capi/releases/download/0.14.3/dss_capi_0.14.3_linux_x64.tar.gz | tar zxv
 git clone --depth=1 https://github.com/dss-extensions/electricdss-tst
 git clone https://github.com/dss-extensions/altdss-rust
 export LD_LIBRARY_PATH=`pwd`/dss_capi/lib/linux_x64
@@ -68,4 +68,4 @@ cargo run --example parallel
 
 # Examples
 
-Check the [`examples`](https://github.com/dss-extensions/AltDSS-Rust/tree/main/examples) folder.
+Check some examples in the [`tests`](https://github.com/dss-extensions/AltDSS-Rust/tree/main/tests) folder. These include basics, multithreading, and use of the properties API.
